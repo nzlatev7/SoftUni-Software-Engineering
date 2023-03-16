@@ -13,11 +13,11 @@ namespace _2
             List<string> participants = Console.ReadLine().Split(", ").ToList();
 
             string pattern = @"(?<letters>[A-Za-z])|(?<numbers>[0-9])";
+            Regex regex = new Regex(pattern);
 
             string command;
             while ((command = Console.ReadLine()) != "end of race")
-            {
-                Regex regex = new Regex(pattern);
+            {                
                 MatchCollection matches = regex.Matches(command);
 
                 List<string> charsOfName = matches.Select(x => x.Groups["letters"].Value).ToList();
