@@ -1,0 +1,6 @@
+sofia
+120
+berlin
+130
+paris
+100
