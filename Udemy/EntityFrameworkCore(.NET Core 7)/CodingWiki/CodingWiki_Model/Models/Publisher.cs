@@ -22,13 +22,13 @@ namespace CodingWiki_Model.Models
         // testing purposes
         // navigation prop
 
-        [ForeignKey("Role")]
+        //[ForeignKey("Role")]
         //[AllowNull] - can not have nullable (int can not be null)
-        public int Role_Id { get; set; }
+        //public int Role_Id { get; set; }
 
         //[Required] 
-        [AllowNull]
-        public Role Role { get; set; }
+        //[AllowNull]
+        //public Role Role { get; set; }
 
         // navigation prop to retrieve all books for publisher
         public List<Book> Books { get; set; }

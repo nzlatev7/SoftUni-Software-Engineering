@@ -2,6 +2,7 @@
 using CodingWiki_Model.Models;
 using CodingWiki_Model.Models.FluentModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -13,6 +14,17 @@ namespace CodingWiki_DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        // q: why we use/need this
+
+        // by default
+        //public ApplicationDbContext()
+        //{
+        //}
+        // for the Program.cs config in the Web app
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
+
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Author> Authors { get; set; }
@@ -40,7 +52,10 @@ namespace CodingWiki_DataAccess.Data
         // appsettings.json or this method
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=CodingWiki;Trusted_Connection=True;TrustServerCertificate=true;");
+            // adding logging to see your query!
+            // hardcoded ways
+            //optionsBuilder.UseSqlServer("Server=.;Database=CodingWiki;Trusted_Connection=True;TrustServerCertificate=true;")
+            //    .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -71,9 +86,9 @@ namespace CodingWiki_DataAccess.Data
             );
 
             modelBuilder.Entity<Publisher>().HasData(
-                new Publisher() { Publisher_Id = 1, Name = "Stoqn", Location = "efeoeffe", Role_Id = 1 },
-                new Publisher() { Publisher_Id = 2, Name = "Mariqn", Location = "wdwwd", Role_Id = 1 },
-                new Publisher() { Publisher_Id = 4, Name = "Andrei", Location = "vitoshka", Role_Id = 1 }
+                new Publisher() { Publisher_Id = 1, Name = "Stoqn", Location = "efeoeffe" },
+                new Publisher() { Publisher_Id = 2, Name = "Mariqn", Location = "wdwwd"},
+                new Publisher() { Publisher_Id = 4, Name = "Andrei", Location = "vitoshka" }
             );
         }
     }

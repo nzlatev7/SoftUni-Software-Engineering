@@ -4,6 +4,7 @@ using CodingWiki_DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodingWiki_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240302112912_seedCategory")]
+    partial class seedCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -298,7 +301,12 @@ namespace CodingWiki_DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Role_Id")
+                        .HasColumnType("int");
+
                     b.HasKey("Publisher_Id");
+
+                    b.HasIndex("Role_Id");
 
                     b.ToTable("Publishers");
 
@@ -307,19 +315,22 @@ namespace CodingWiki_DataAccess.Migrations
                         {
                             Publisher_Id = 1,
                             Location = "efeoeffe",
-                            Name = "Stoqn"
+                            Name = "Stoqn",
+                            Role_Id = 1
                         },
                         new
                         {
                             Publisher_Id = 2,
                             Location = "wdwwd",
-                            Name = "Mariqn"
+                            Name = "Mariqn",
+                            Role_Id = 1
                         },
                         new
                         {
                             Publisher_Id = 4,
                             Location = "vitoshka",
-                            Name = "Andrei"
+                            Name = "Andrei",
+                            Role_Id = 1
                         });
                 });
 
@@ -449,6 +460,17 @@ namespace CodingWiki_DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("CodingWiki_Model.Models.Publisher", b =>
+                {
+                    b.HasOne("CodingWiki_Model.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("Role_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("CodingWiki_Model.Models.Author", b =>
