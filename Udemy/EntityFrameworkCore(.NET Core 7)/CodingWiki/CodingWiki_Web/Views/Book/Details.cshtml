@@ -1,0 +1,76 @@
+﻿@model CodingWiki_Model.Models.Book
+@{
+    var title = "Create Book Details";
+}
+<form method="post">
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="BookId" />
+        <input type="hidden" asp-for="BookDetail.BookDetail_Id" />  
+        @if (Model.BookDetail != null)
+        {
+            //edit
+            title = "Edit Book Details";
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8 pt-4">
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="Title"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Title" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="BookDetail.NumberOfChapters"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="BookDetail.NumberOfChapters" class="form-control" />
+                    <span asp-validation-for="BookDetail.NumberOfChapters" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="BookDetail.NumberOfPages"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="BookDetail.NumberOfPages" class="form-control" />
+                    <span asp-validation-for="BookDetail.NumberOfPages" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row py-2">
+                <div class="col-4">
+                    <label asp-for="BookDetail.Weight"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="BookDetail.Weight" class="form-control" />
+                    <span asp-validation-for="BookDetail.Weight" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row py-2">   
+                <div class="col-4 offset-4">
+                    @if (Model.BookDetail != null)
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Create</button>
+                    }
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

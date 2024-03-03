@@ -75,9 +75,9 @@ namespace CodingWiki_DataAccess.Data
             modelBuilder.ApplyConfiguration(new Fluent_PublisherConfig());
 
             modelBuilder.Entity<Book>().HasData(
-                new Book() { Book_Id = 2, Title = "spider", ISBN = "123B12", Price = 10.99m, Publisher_Id = 2 },
-                new Book() { Book_Id = 4, Title = "panda", ISBN = "2323", Price = 10.99m, Publisher_Id = 1 },
-                new Book() { Book_Id = 5, Title = "wow", ISBN = "23", Price = 16.99m, Publisher_Id = 1 }
+                new Book() { BookId = 2, Title = "spider", ISBN = "123B12", Price = 10.99m, Publisher_Id = 2 },
+                new Book() { BookId = 4, Title = "panda", ISBN = "2323", Price = 10.99m, Publisher_Id = 1 },
+                new Book() { BookId = 5, Title = "wow", ISBN = "23", Price = 16.99m, Publisher_Id = 1 }
             );
 
             modelBuilder.Entity<Role>().HasData(

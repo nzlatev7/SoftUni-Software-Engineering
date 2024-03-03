@@ -11,8 +11,8 @@ namespace CodingWiki_Model.Models
 {
     public class Book
     {
-        [Key]
-        public int Book_Id { get; set; }
+        //[Key]
+        public int BookId { get; set; }
         public string Title { get; set; }
 
         [MaxLength(20)]
