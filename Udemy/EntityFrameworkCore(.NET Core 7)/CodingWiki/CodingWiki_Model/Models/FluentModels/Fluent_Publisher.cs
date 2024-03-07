@@ -30,6 +30,6 @@ namespace CodingWiki_Model.Models.FluentModels
 
         //// navigation prop to retrieve all books for publisher
         ///// one to many
-        public List<Fluent_Book> Books { get; set; }
+        public virtual List<Fluent_Book> Books { get; set; }
     }
 }

@@ -29,6 +29,6 @@ namespace CodingWiki_Model.Models.FluentModels
         //public List<Fluent_Book> Books { get; set; }
 
         // one to many
-        public List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
+        public virtual List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
     }
 }

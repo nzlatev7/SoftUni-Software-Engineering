@@ -31,6 +31,6 @@ namespace CodingWiki_Model.Models
         //public Role Role { get; set; }
 
         // navigation prop to retrieve all books for publisher
-        public List<Book> Books { get; set; }
+        public virtual List<Book> Books { get; set; }
     }
 }

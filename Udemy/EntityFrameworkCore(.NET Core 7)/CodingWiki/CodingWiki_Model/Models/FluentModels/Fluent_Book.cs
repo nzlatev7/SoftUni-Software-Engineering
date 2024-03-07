@@ -21,16 +21,16 @@ namespace CodingWiki_Model.Models.FluentModels
 
         // navigation property - the real relation
         // one to one
-        public Fluent_BookDetail BookDetail { get; set; }
+        public virtual Fluent_BookDetail BookDetail { get; set; }
 
         public int Publisher_Id { get; set; }
-        public Fluent_Publisher Publisher { get; set; }
+        public virtual Fluent_Publisher Publisher { get; set; }
 
         // many to many
 
         //public List<Fluent_Author> Authors { get; set; }
 
         // one to many
-        public List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
+        public virtual List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
     }
 }
