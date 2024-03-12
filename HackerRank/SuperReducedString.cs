@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1wi_proekt
+namespace _1wi_proekt.Solutions
 {
     public class Super_Reduced_String
     {
